@@ -3,10 +3,11 @@ import {
 } from '@angular/core';
 
 import * as sjcl from 'sjcl';
+import * as garlicoreLib from 'garlicore-lib';
 import * as bitcoreLib from 'bitcore-lib';
 import * as bitcoreLibCash from 'bitcore-lib-cash';
 import * as bitcoreLibGold from 'bitcore-lib-gold';
-import * as Mnemonic from 'bitcore-mnemonic';
+import * as Mnemonic from 'garlicore-mnemonic';
 import * as _ from 'lodash';
 import {
   HttpClient
@@ -20,6 +21,7 @@ export class RecoveryService {
   public PATHS: Object;
 
   public apiURI = {
+    'grlc/livenet': 'https://garlicinsight.com/insight-grlc-api/',
     'btc/livenet': 'https://insight.bitpay.com/api/',
     'btc/testnet': 'https://test-insight.bitpay.com/api/',
     //'bch/livenet': 'https://bch-insight.bitpay.com/api/,'
@@ -177,7 +179,9 @@ export class RecoveryService {
         return this.fromMnemonic(dataItem, m, n, coin, network);
     });
 
-    if (coin == 'btc') {
+    if (coin == 'grlc') {
+      self.bitcore = garlicoreLib;
+    } else if (coin == 'btc') {
       self.bitcore = bitcoreLib;
     } else if (coin == 'bch') {
       self.bitcore = bitcoreLibCash;
@@ -278,6 +282,7 @@ export class RecoveryService {
     var inactiveCount;
 
     var baseDerivations = this.getHdDerivations(wallet);
+    console.log(baseDerivations);
 
     function exploreDerivation(i) {
 

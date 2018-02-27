@@ -1,15 +1,15 @@
 <div class="header">
   <div class="header-content">
-    <img class="bitpay-logo" src="assets/img/bitpay-logo-negative.svg" alt="Bitpay">
+    <!-- <img class="bitpay-logo" src="assets/img/bitpay-logo-negative.svg" alt="Bitpay"> -->
     <div class="header-center">
       <h3 class="header-title">Recovery Tool</h3>
       <div class="repository-link">
-        <a href="https://github.com/bitpay/copay-recovery" target="blank">
+        <a href="https://github.com/garlicoin-project/copay-recovery" target="blank">
           <img src="assets/img/github.png" alt="Github">
         </a>
       </div>
     </div>
-    <img class="copay-logo" src="assets/img/copay-logo-negative.svg" alt="Copay">
+    <!-- <img class="copay-logo" src="assets/img/copay-logo-negative.svg" alt="Copay"> -->
   </div>
 </div>
 <div [hidden]="!showLoadingSpinner" class="no-clickable-background">
@@ -121,6 +121,7 @@
     </div>
 
     <button type="submit" [disabled]="!processInputsForm.form.valid  || showLoadingSpinner || !termsAccepted" class="btn btn-primary btn-lg btn-block">
+      <span *ngIf="chain == 'grlc/livenet'">Scan GRLC Wallet</span>
       <span *ngIf="chain == 'btc/livenet' || chain == 'btc/testnet'">Scan BTC Wallet</span>
       <span *ngIf="chain == 'bch/livenet'">Scan BCH Wallet</span>
       <span *ngIf="chain == 'btg/livenet'">Scan BTG Wallet</span>
