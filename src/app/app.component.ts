@@ -208,7 +208,7 @@ export class AppComponent implements OnInit {
 
     switch (this.chain) {
       case 'grlc/livenet':
-        url = 'https://garlicinsight.com/tx/';
+        url = 'https://garli.co.in/tx/';
         break;
       case 'btc/livenet':
         url = 'https://insight.bitpay.com/tx/';

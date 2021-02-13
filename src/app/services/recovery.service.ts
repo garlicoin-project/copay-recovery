@@ -21,7 +21,7 @@ export class RecoveryService {
   public PATHS: Object;
 
   public apiURI = {
-    'grlc/livenet': 'https://garlicinsight.com/insight-grlc-api/',
+    'grlc/livenet': 'https://garli.co.in/insight-grlc-api/',
     'btc/livenet': 'https://insight.bitpay.com/api/',
     'btc/testnet': 'https://test-insight.bitpay.com/api/',
     //'bch/livenet': 'https://bch-insight.bitpay.com/api/,'
@@ -303,6 +303,7 @@ export class RecoveryService {
 
         if (!_.isEmpty(addressData)) {
           console.log('#Active address:', addressData);
+          console.log(addressData.privKeys[0].toWIF());
           activeAddress.push(addressData);
           inactiveCount = 0;
         } else
